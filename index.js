@@ -1,5 +1,7 @@
 const readline = require("readline-sync");
 
+const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|com\.ar)$/;
+
 let correos = [
   "ana@gmail.com",
   "carlos@yahoo.com",
@@ -26,8 +28,14 @@ function listarCorreos() {
 
 function agregarCorreo() {
   const nuevo = readline.question("Ingrese el nuevo correo: ");
-  correos.push(nuevo);
-  console.log("✅ Correo agregado.");
+  const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|com\.ar)$/;
+
+  if (regexCorreo.test(nuevo)) {
+    correos.push(nuevo);
+    console.log("Correo válido agregado.");
+  } else {
+    console.log("Correo inválido. Debe contener '@' y terminar en .com o .com.ar");
+  }
 }
 
 function eliminarCorreo() {
@@ -35,9 +43,9 @@ function eliminarCorreo() {
   const i = readline.questionInt("Número de correo a eliminar: ") - 1;
   if (i >= 0 && i < correos.length) {
     const eliminado = correos.splice(i, 1);
-    console.log(`🗑️ Correo eliminado: ${eliminado}`);
+    console.log(`Correo eliminado: ${eliminado}`);
   } else {
-    console.log("❌ Índice inválido.");
+    console.log("Índice inválido.");
   }
 }
 
@@ -47,9 +55,9 @@ function modificarCorreo() {
   if (i >= 0 && i < correos.length) {
     const nuevo = readline.question("Ingrese el nuevo correo: ");
     correos[i] = nuevo;
-    console.log("✏️ Correo modificado.");
+    console.log("Correo modificado.");
   } else {
-    console.log("❌ Índice inválido.");
+    console.log("Índice inválido.");
   }
 }
 
@@ -73,9 +81,9 @@ do {
       modificarCorreo();
       break;
     case "5":
-      console.log("👋 Saliendo del sistema...");
+      console.log("Saliendo del sistema...");
       break;
     default:
-      console.log("❗ Opción inválida.");
+      console.log("Opción inválida.");
   }
 } while (opcion !== "5");
