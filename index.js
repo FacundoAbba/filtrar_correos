@@ -17,7 +17,8 @@ function mostrarMenu() {
   console.log("3. Eliminar correo (Baja)");
   console.log("4. Modificar correo");
   console.log("5. Filtrar correo");
-  console.log("6. Salir");
+  console.log("6. Extraer dominios");
+  console.log("7. Salir");
 }
 
 function listarCorreos() {
@@ -42,6 +43,22 @@ function buscarCorreo() {
   } else {
     console.log("No se encontraron coincidencias.");
   }
+}
+
+function extraerDominios() {
+  if (correos.length === 0) {
+    console.log("No hay correos registrados.");
+    return;
+  }
+
+  const dominios = correos.map(correo => {
+    const despuesDelArroba = correo.split("@")[1]; 
+    const dominioPrincipal = despuesDelArroba.split(".")[0]; 
+    return dominioPrincipal;
+  });
+
+  console.log("Dominios:");
+  console.log(dominios.join(" - "));
 }
 
 function agregarCorreo() {
@@ -102,9 +119,12 @@ do {
       buscarCorreo();
       break;
     case "6":
+      extraerDominios();
+      break;
+    case "7":
         console.log("Saliendo del sistema...");
         break;
     default:
       console.log("Opción inválida.");
   }
-} while (opcion !== "5");
+} while (opcion !== "7");
