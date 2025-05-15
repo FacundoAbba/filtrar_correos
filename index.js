@@ -51,14 +51,21 @@ function extraerDominios() {
     return;
   }
 
-  const dominios = correos.map(correo => {
-    const despuesDelArroba = correo.split("@")[1]; 
-    const dominioPrincipal = despuesDelArroba.split(".")[0]; 
-    return dominioPrincipal;
-  });
+  const conteo = correos.reduce((acumulador, correo) => {
+    const partes = correo.split("@");
+    if (partes.length < 2) return acumulador;
 
-  console.log("Dominios:");
-  console.log(dominios.join(" - "));
+    const despuesDelArroba = partes[1];
+    const dominio = despuesDelArroba.split(".")[0]; // dominio principal
+
+    acumulador[dominio] = (acumulador[dominio] || 0) + 1;
+    return acumulador;
+  }, {});
+
+  console.log("Cantidad de correos por dominio:");
+  for (const dominio in conteo) {
+    console.log(`${dominio}: ${conteo[dominio]}`);
+  }
 }
 
 function agregarCorreo() {
