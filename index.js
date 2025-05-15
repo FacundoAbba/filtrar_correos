@@ -20,11 +20,14 @@ function mostrarMenu() {
 }
 
 function listarCorreos() {
-  console.log("\n📧 Correos actuales:");
-  correos.forEach((correo, i) => {
-    console.log(`${i + 1}. ${correo}`);
-  });
+  if (correos.length === 0) {
+    console.log("No hay correos registrados.");
+  } else {
+    console.log("Correos registrados:");
+    console.log(correos.join(" - "));
+  }
 }
+
 
 function agregarCorreo() {
   const nuevo = readline.question("Ingrese el nuevo correo: ");
