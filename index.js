@@ -81,13 +81,21 @@ function agregarCorreo() {
 }
 
 function eliminarCorreo() {
+  if (correos.length === 0) {
+    console.log("No hay correos registrados.");
+    return;
+  }
+
   listarCorreos();
-  const i = readline.questionInt("Número de correo a eliminar: ") - 1;
-  if (i >= 0 && i < correos.length) {
-    const eliminado = correos.splice(i, 1);
-    console.log(`Correo eliminado: ${eliminado}`);
+  const correoAEliminar = readline.question("Ingrese el correo que desea eliminar: ").toLowerCase();
+
+  const indice = correos.findIndex(correo => correo.toLowerCase() === correoAEliminar);
+
+  if (indice !== -1) {
+    const eliminado = correos.splice(indice, 1);
+    console.log(`Correo eliminado: ${eliminado[0]}`);
   } else {
-    console.log("Índice inválido.");
+    console.log("Correo no encontrado.");
   }
 }
 
