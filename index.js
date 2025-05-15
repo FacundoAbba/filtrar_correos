@@ -16,7 +16,8 @@ function mostrarMenu() {
   console.log("2. Agregar correo (Alta)");
   console.log("3. Eliminar correo (Baja)");
   console.log("4. Modificar correo");
-  console.log("5. Salir");
+  console.log("5. Filtrar correo");
+  console.log("6. Salir");
 }
 
 function listarCorreos() {
@@ -28,6 +29,20 @@ function listarCorreos() {
   }
 }
 
+function buscarCorreo() {
+  const termino = readline.question("Buscar correos que contengan: ").toLowerCase();
+
+  const resultados = correos.filter(correo =>
+    correo.toLowerCase().includes(termino)
+  );
+
+  if (resultados.length > 0) {
+    console.log("Resultados encontrados:");
+    console.log(resultados.join(" - "));
+  } else {
+    console.log("No se encontraron coincidencias.");
+  }
+}
 
 function agregarCorreo() {
   const nuevo = readline.question("Ingrese el nuevo correo: ");
@@ -84,8 +99,11 @@ do {
       modificarCorreo();
       break;
     case "5":
-      console.log("Saliendo del sistema...");
+      buscarCorreo();
       break;
+    case "6":
+        console.log("Saliendo del sistema...");
+        break;
     default:
       console.log("Opción inválida.");
   }
