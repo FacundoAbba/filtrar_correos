@@ -1,4 +1,6 @@
-const readline = require("readline-sync");
+const readline = require("readline-sync"); // Importa la librería readline-sync para leer la entrada del usuario desde consola
+
+// Importa todas las funciones locales que utilizaremos desde el archivo funciones.js
 const {
   listarCorreos,
   agregarCorreo,
@@ -8,6 +10,7 @@ const {
   extraerDominios
 } = require("./funciones");
 
+// Menú principal de la aplicación
 function mostrarMenu() {
   console.log("\n=== GESTIÓN DE CORREOS ===");
   console.log("1. Listar correos");
@@ -19,10 +22,11 @@ function mostrarMenu() {
   console.log("7. Salir");
 }
 
+// Función principal que ejecuta el menú y las opciones seleccionadas
 let opcion;
 do {
   mostrarMenu();
-  opcion = readline.question("Seleccione una opción: ");
+  opcion = readline.question("Seleccione una opción: "); // Readline nos permite leer la entrada del usuario desde la consola
 
   switch (opcion) {
     case "1":

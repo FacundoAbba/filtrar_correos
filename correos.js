@@ -1,3 +1,4 @@
+// Modulo que contiene la lista de correos electrónicos
 let correos = [
   "ana@gmail.com",
   "carlos@yahoo.com",
