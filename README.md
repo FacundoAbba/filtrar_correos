@@ -1,9 +1,11 @@
-✉️ Descripción
+✉️ Descripción:
+
 Filtrar Correos Electrónicos es una aplicación de consola desarrollada en JavaScript que permite gestionar una lista de direcciones de correo de forma completa e intuitiva. Está diseñada para quienes desean una forma rápida y eficaz de administrar correos electrónicos desde la terminal, sin necesidad de interfaces gráficas ni conexiones a bases de datos.
 
 Incluye funcionalidades de alta, baja, modificación, listado, filtrado avanzado y estadísticas de dominios, lo que la convierte en una herramienta ideal para ejercicios académicos, validaciones, prácticas de lógica de programación y prototipos de sistemas de entrada de datos.
 
-🔧 Características Principales
+🔧 Características Principales:
+
 🆕 Alta de correos: Agregá correos nuevos, validando su formato antes de incluirlos.
 
 🗑️ Eliminación: Borrá correos específicos por su dirección exacta.
